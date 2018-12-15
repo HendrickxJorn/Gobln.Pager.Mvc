@@ -1,7 +1,7 @@
 [defaultCssImage]: images/defaultCssImage.png "With Css image"
-[defaultBootstrapImage]: images/defaultbootstrapImage.png "With Bootstrap image"
-[parameterCssImage]: images/parameterCssImage.png "With Css image"
-[parameterBootstrapImage]: images/parameterbootstrapImage.png "With Bootstrap image"
+[defaultBootstrapImage]: images/defaultBootstrapImage.png "With Bootstrap image"
+[parameterCssImage]: images/ParameterCssImage.png "With Css image"
+[parameterBootstrapImage]: images/ParameterBootstrapImage.png "With Bootstrap image"
 
 # Gobln.Pager.Mvc
 
