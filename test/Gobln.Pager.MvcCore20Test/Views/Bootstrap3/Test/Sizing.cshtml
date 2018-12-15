@@ -1,0 +1,43 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+<div>
+    <h2>Sizing</h2>
+
+    <div>
+        @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+        {
+            PagerSize = PagerSizeEnum.Large,
+            ItemShowOrder = new[] { ItemShow.PagesItems }
+        })
+    </div>
+
+    <nav aria-label="...">
+        <ul class="pagination pagination-lg">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+        {
+            PagerSize = PagerSizeEnum.Small,
+            ItemShowOrder = new[] { ItemShow.PagesItems }
+        })
+    </div>
+
+    <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+    </nav>
+</div>

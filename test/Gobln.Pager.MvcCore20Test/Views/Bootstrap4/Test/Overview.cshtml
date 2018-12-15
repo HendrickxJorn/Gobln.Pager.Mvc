@@ -1,0 +1,28 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+<div>
+    <h2>Overview</h2>
+
+    <div>
+        @{
+            var page = Model.ToPage(1, 2);
+        }
+
+        @Html.Pager(page, new PagerOptions()
+        {
+            NavTagHtmlAttributes = new {  id = "5" ,  @class= "tester", data_atrr= "dataTest"}
+        })
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>

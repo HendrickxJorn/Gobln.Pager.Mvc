@@ -1,0 +1,16 @@
+﻿@model Gobln.Pager.PagedList<Gobln.Pager.Mvc45Test.Models.TestModel1>
+@{
+    ViewBag.Title = "Bootstrap 4 examples";
+}
+
+<link href="/Content/Bootstrap4/bootstrap.css" rel="stylesheet">
+
+<h2>Bootstrap 4 examples</h2>
+
+<div>
+    @Html.Partial("Test/Overview", Model)
+    @Html.Partial("Test/WorkingWithIcons", Model)
+    @Html.Partial("Test/DisabledAndActiveStates", Model)
+    @Html.Partial("Test/Sizing", Model)
+    @Html.Partial("Test/Alignment", Model)
+</div>

@@ -1,0 +1,11 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+<div>
+    <h2>
+        No options
+    </h2>
+
+    @Html.Pager(Model.ToPage(1, 2))
+</div>

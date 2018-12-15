@@ -1,0 +1,23 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.Mvc45Test.Models.TestModel1>
+
+<div>
+    <h2>
+        Change url
+    </h2>
+
+    @Html.Pager(Model.ToPage(1, 2), new PagerOptions(){
+        Url = @"https://www.google.com/"
+    })
+</div>
+
+<div>
+    <h2>
+        Disable url
+    </h2>
+
+    @Html.Pager(Model.ToPage(1, 2), new PagerOptions(){
+        UrlDisable = true
+    })
+</div>

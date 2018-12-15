@@ -1,0 +1,9 @@
+﻿https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration
+https://stackoverflow.com/questions/47591910/is-configurationmanager-appsettings-available-in-net-core-2-0?rq=1
+https://docs.microsoft.com/en-us/aspnet/core/migration/proper-to-2x/
+https://tahirnaushad.com/2017/08/15/asp-net-core-configuration/
+http://www.c-sharpcorner.com/article/work-with-configuration-in-asp-net-core/
+https://weblog.west-wind.com/posts/2016/May/23/Strongly-Typed-Configuration-Settings-in-ASPNET-Core
+
+
+https://weblog.west-wind.com/posts/2012/Dec/28/Building-a-better-NET-Application-Configuration-Class-revisited

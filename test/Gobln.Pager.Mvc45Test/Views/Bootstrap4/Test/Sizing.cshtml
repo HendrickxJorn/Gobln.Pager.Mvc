@@ -1,0 +1,24 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.Mvc45Test.Models.TestModel1>
+
+<div>
+    <h2>Sizing</h2>
+
+    <div>
+        @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+        {
+            PagerSize = PagerSizeEnum.Large,
+            ItemShowOrder = new[] { ItemShow.PagesItems }
+        })
+    </div>
+
+    <div>
+        @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+        {
+            PagerSize = PagerSizeEnum.Small,
+            ItemShowOrder = new[] { ItemShow.PagesItems }
+        })
+    </div>
+
+</div>

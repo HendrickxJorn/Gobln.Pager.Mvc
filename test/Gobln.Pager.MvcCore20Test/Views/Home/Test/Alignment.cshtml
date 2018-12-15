@@ -1,0 +1,24 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+<div>
+    <h2>Alignment center</h2>
+    @{
+        var page = Model.ToPage(1, 2);
+    }
+
+    @Html.Pager(page, new PagerOptions
+    {
+        PagerAlignment = PagerAlignmentEnum.Center
+    })
+</div>
+
+<div>
+    <h2>Alignment right</h2>
+
+    @Html.Pager(page, new PagerOptions
+    {
+        PagerAlignment = PagerAlignmentEnum.Right
+    })
+</div>

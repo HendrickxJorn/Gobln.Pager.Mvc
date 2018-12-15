@@ -1,0 +1,19 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.Mvc45Test.Models.TestModel1>
+
+<div>
+    <h2>Overview</h2>
+
+    <div>
+        @{
+            var page = Model.ToPage(1, 2);
+        }
+
+        @Html.Pager(page, new PagerOptions()
+        {
+            NavTagHtmlAttributes = new {  id = "5" ,  @class= "tester", data_atrr= "dataTest"}
+        })
+    </div>
+
+</div>
