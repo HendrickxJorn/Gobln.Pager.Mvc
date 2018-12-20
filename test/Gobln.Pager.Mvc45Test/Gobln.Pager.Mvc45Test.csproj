@@ -48,8 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gobln.Pager, Version=0.52.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Gobln.Pager.0.52.0\lib\net45\Gobln.Pager.dll</HintPath>
+    <Reference Include="Gobln.Pager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gobln.Pager.1.0.0\lib\net45\Gobln.Pager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
