@@ -47,13 +47,16 @@ var page = new List<TestModel1>()
 // Create default pager
 @Html.Pager(page)
 
- ```
+```
 
 Results in
+
 With css stylesheet
+
 ![Can not display image][defaultCssImage]
 
 With Bootstrap
+
 ![Can not display image][defaultBootstrapImage]
 
 ```csharp
@@ -73,11 +76,26 @@ With Bootstrap
 ```
 
 Results in
+
 With css stylesheet
+
 ![Can not display image][parameterCssImage]
 
 With Bootstrap
+
 ![Can not display image][parameterBootstrapImage]
+
+Taghelper can be used with core 2.0, and will work the same as @Html.Pager()
+
+```csharp
+
+<pager page="Model.ToPage(1, 2)"
+       pager-options="@(new PagerOptions()
+                {
+                    DataIndexName="TestNamePageIndex"
+                })" />
+       
+```
 
 For more examples, check the test project
 

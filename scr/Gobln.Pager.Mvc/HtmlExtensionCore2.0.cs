@@ -40,13 +40,13 @@ namespace Gobln.Pager.Mvc
                 throw new ArgumentNullException("pagerOptions.ItemShowOrder");
 
             if (page == null || (!page.HasPaging && pagerOptions.HideIfNotPaged))
-                return new TagBuilder(string.Empty).RenderSelfClosingTag();
+                return new HtmlContentBuilder();
 
             if (!pagerOptions.UrlDisable)
             {
                 if (string.IsNullOrWhiteSpace(pagerOptions.Url))
                 {
-                    pagerOptions.Url = Helper.GetCurrentUrlString(html);
+                    pagerOptions.Url = Helper.GetCurrentUrlString(html.ViewContext);
                 }
                 else
                 {

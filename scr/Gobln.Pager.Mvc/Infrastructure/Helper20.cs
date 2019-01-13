@@ -1,18 +1,18 @@
 ﻿#if NETCOREAPP2_0
 
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Web;
 
 namespace Gobln.Pager.Mvc.Infrastructure
 {
     internal static class Helper
     {
-        public static string GetCurrentUrlString(IHtmlHelper html, string[] excludeParms = null)
+        public static string GetCurrentUrlString(ViewContext viewContext, string[] excludeParms = null)
         {
-            var absoluteUri = new Uri($"{html.ViewContext.HttpContext.Request.Scheme}://{html.ViewContext.HttpContext.Request.Host}{html.ViewContext.HttpContext.Request.Path}{html.ViewContext.HttpContext.Request.QueryString}");
+            var absoluteUri = new Uri($"{viewContext.HttpContext.Request.Scheme}://{viewContext.HttpContext.Request.Host}{viewContext.HttpContext.Request.Path}{viewContext.HttpContext.Request.QueryString}");
 
             var uriBuilder = new UriBuilder(absoluteUri);
 

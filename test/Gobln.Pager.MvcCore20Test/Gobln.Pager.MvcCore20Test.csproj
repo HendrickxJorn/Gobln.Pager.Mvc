@@ -19,6 +19,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\TagHelper\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TagHelper\Test\Alignment.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TagHelper\Test\Disabled.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TagHelper\Test\NoOptions.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TagHelper\Test\PageIndexName.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TagHelper\Test\ShowItems.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TagHelper\Test\Url.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TagHelper\Test\WorkingWithIcons.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="wwwroot\css\gobln.pager.mvc.css">
       <PackagePath>Content\Content\gobln.pager.mvc.css</PackagePath>
       <Pack>true</Pack>

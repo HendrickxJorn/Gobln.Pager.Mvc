@@ -2,12 +2,8 @@
 
 using Gobln.Pager.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 
 namespace Gobln.Pager.Mvc.Builder
@@ -28,7 +24,7 @@ namespace Gobln.Pager.Mvc.Builder
             return RenderPager();
         }
 
-#region Private
+        #region Private
 
         private IHtmlContent RenderPager()
         {
@@ -141,12 +137,12 @@ namespace Gobln.Pager.Mvc.Builder
             return nav;
         }
 
-#region Generate
+        #region Generate
 
         private TagBuilder GenerateNav()
         {
             var tagBuilder = new TagBuilder("nav");
-            
+
             tagBuilder.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(_pagerOptions.NavTagHtmlAttributes));
 
             return tagBuilder;
@@ -163,6 +159,7 @@ namespace Gobln.Pager.Mvc.Builder
                 case PagerSizeEnum.Large:
                     tagBuilder.AddCssClass("pagination-lg");
                     break;
+
                 case PagerSizeEnum.Small:
                     tagBuilder.AddCssClass("pagination-sm");
                     break;
@@ -173,6 +170,7 @@ namespace Gobln.Pager.Mvc.Builder
                 case PagerAlignmentEnum.Center:
                     tagBuilder.AddCssClass("justify-content-center");
                     break;
+
                 case PagerAlignmentEnum.Right:
                     tagBuilder.AddCssClass("justify-content-end");
                     break;
@@ -333,10 +331,9 @@ namespace Gobln.Pager.Mvc.Builder
             return Helper.AddQueryValuesToUrlString(_pagerOptions.Url, new Dictionary<string, string> { { _pagerOptions.DataIndexName, pageIndex.ToString() } });
         }
 
-#endregion Generate
+        #endregion Generate
 
-
-#endregion Private
+        #endregion Private
     }
 }
 

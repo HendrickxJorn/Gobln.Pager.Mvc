@@ -1,13 +1,14 @@
 ﻿@using Gobln.Pager
-@using Gobln.Pager.Mvc
 @model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+@addTagHelper "*, Gobln.Pager.Mvc"
 
 <div>
     <h2>
         No options
     </h2>
 
-    @Html.Pager(Model.ToPage(1, 2))
+    <pager page="@Model.ToPage(1, 2)" />
 </div>
 
 <div>
@@ -15,9 +16,9 @@
         No options and empty page
     </h2>
 
-    @{ 
+    @{
         var emptyModel = new Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>();
     }
 
-    @Html.Pager(emptyModel.ToPage(1, 2))
+    <pager page="@emptyModel.ToPage(1, 2)" />
 </div>

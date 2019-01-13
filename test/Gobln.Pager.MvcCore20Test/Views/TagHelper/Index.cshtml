@@ -1,0 +1,18 @@
+﻿@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+@{
+    ViewBag.Title = "Examples";
+}
+
+<link href="~/css/Bootstrap4/bootstrap.css" rel="stylesheet">
+
+<h2>Examples with taghelper</h2>
+
+@{
+    Html.RenderPartial(@"Test\NoOptions");
+    Html.RenderPartial(@"Test\WorkingWithIcons");
+    Html.RenderPartial(@"Test\Disabled");
+    Html.RenderPartial(@"Test\Alignment");
+    Html.RenderPartial(@"Test\Url");
+    Html.RenderPartial(@"Test\ShowItems");
+    Html.RenderPartial(@"Test\PageIndexName");
+}

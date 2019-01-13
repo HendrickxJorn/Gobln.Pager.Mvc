@@ -1,0 +1,26 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+@addTagHelper "*, Gobln.Pager.Mvc"
+
+<div>
+    <h2>Disabled</h2>
+
+    <div>
+        <pager page="Model.ToPage(1, 2)"
+               pager-options="new PagerOptions()
+                    {
+                        ActiveDisplay = true
+                    }" />
+    </div>
+
+    <div>
+        <pager page="Model.ToPage(8, 2)"
+               pager-options="new PagerOptions()
+                    {
+                        ActiveDisplay = true,
+                        ActiveDisplayAsLink = true
+                    }" />
+    </div>
+</div>

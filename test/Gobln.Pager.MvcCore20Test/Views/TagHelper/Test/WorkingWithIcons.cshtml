@@ -1,0 +1,17 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+@addTagHelper "*, Gobln.Pager.Mvc"
+
+<div>
+    <h2>Working with icons</h2>
+
+    <div>
+        <pager page="Model.ToPage(1, 2)"
+               pager-options="new PagerOptions()
+                    {
+                        UseIcons = true
+                    }" />
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+@addTagHelper "*, Gobln.Pager.Mvc"
+
+<div>
+    <h2>
+        Change the pageindex name
+    </h2>
+
+    <pager page="Model.ToPage(1, 2)"
+           pager-options="@(new PagerOptions()
+                    {
+                        DataIndexName="TestNamePageIndex"
+                    })" />
+</div>
