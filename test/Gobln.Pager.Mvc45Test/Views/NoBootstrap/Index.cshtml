@@ -1,0 +1,23 @@
+﻿@model Gobln.Pager.PagedList<Gobln.Pager.Mvc45Test.Models.TestModel1>
+@{
+    ViewBag.Title = "Examples";
+    Layout = "~/Views/Shared/_LayoutBootstrap4.cshtml";
+}
+
+@section Css{
+    <link href="~/Content/Bootstrap4WitoutPaging/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Gobln.Pager.Mvc.css" rel="stylesheet">
+}
+
+<h2>Examples</h2>
+
+@{
+    Html.RenderPartial(@"Test\NoOptions");
+    Html.RenderAction(@"WorkingWithIcons");
+    Html.RenderPartial(@"Test\Disabled");
+    Html.RenderPartial(@"Test\Alignment");
+    Html.RenderPartial(@"Test\Url");
+    Html.RenderPartial(@"Test\ShowItems");
+    Html.RenderPartial(@"Test\ShowItemsRange");
+    Html.RenderPartial(@"Test\PageIndexName");
+}

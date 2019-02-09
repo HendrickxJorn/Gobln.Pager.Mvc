@@ -1,21 +1,21 @@
 ﻿#if !NETCOREAPP2_0
 
 using Gobln.Pager.Mvc.Infrastructure;
+using System.Collections.Generic;
 using System.Text;
 using System.Web.Mvc;
-using System.Collections.Generic;
 
 namespace Gobln.Pager.Mvc.Builder
 {
     internal class PagerBuilder
     {
-        internal IPage _pageDefition { get; private set; }
+        internal IPage _page { get; private set; }
         internal IPagerOptions _pagerOptions { get; private set; }
 
         internal PagerBuilder(IPage page, IPagerOptions pagerOptions)
         {
             _pagerOptions = pagerOptions ?? new PagerOptions();
-            _pageDefition = page ?? new EmptyPage();
+            _page = page ?? new EmptyPage();
         }
 
         public MvcHtmlString Render()
@@ -34,41 +34,41 @@ namespace Gobln.Pager.Mvc.Builder
                 switch (item)
                 {
                     case ItemShow.FirstItem:
-                        if (_pagerOptions.AlwaysShowFirstPageItem || _pageDefition.CurrentPageIndex - _pagerOptions.VisableItemsPerSide > 1)
+                        if (_pagerOptions.AlwaysShowFirstPageItem || _page.CurrentPageIndex - _pagerOptions.VisableItemsPerSide > 1)
                         {
-                            var il = GenerateIl(_pageDefition.CurrentPageIndex == 1);
+                            var il = GenerateIl(_page.CurrentPageIndex == 1);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelFirstPageItem, "&laquo;&laquo;", 1, disableTabing: _pageDefition.CurrentPageIndex == 1).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelFirstPageItem, "&laquo;&laquo;", 1, disableTabing: _page.CurrentPageIndex == 1).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }
                         break;
 
                     case ItemShow.PreviousItem:
-                        if (_pagerOptions.AlwaysShowPreviousPageItem || _pageDefition.CurrentPageIndex > 1)
+                        if (_pagerOptions.AlwaysShowPreviousPageItem || _page.CurrentPageIndex > 1)
                         {
-                            var previous = _pageDefition.CurrentPageIndex - 1;
+                            var previous = _page.CurrentPageIndex - 1;
 
                             previous = previous < 1 ? 1 : previous;
 
-                            var il = GenerateIl(_pageDefition.CurrentPageIndex == previous);
+                            var il = GenerateIl(_page.CurrentPageIndex == previous);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelPreviousPageItem, "&laquo;", previous, disableTabing: _pageDefition.CurrentPageIndex == previous).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelPreviousPageItem, "&laquo;", previous, disableTabing: _page.CurrentPageIndex == previous).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }
                         break;
 
                     case ItemShow.JumpPreviousItem:
-                        if (_pagerOptions.AlwaysShowJumpPageItem || _pageDefition.CurrentPageIndex - _pagerOptions.VisableItemsPerSide > 2)
+                        if (_pagerOptions.AlwaysShowJumpPageItem || _page.CurrentPageIndex - _pagerOptions.VisableItemsPerSide > 2)
                         {
-                            var previous = ((_pageDefition.CurrentPageIndex - _pagerOptions.VisableItemsPerSide) / 2) + 1;
+                            var previous = ((_page.CurrentPageIndex - _pagerOptions.VisableItemsPerSide) / 2) + 1;
 
                             previous = previous < 1 ? 1 : previous;
 
-                            var il = GenerateIl(_pageDefition.CurrentPageIndex == previous);
+                            var il = GenerateIl(_page.CurrentPageIndex == previous);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelJumpPageItem, string.Empty, previous, disableTabing: _pageDefition.CurrentPageIndex == previous).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelJumpPageItem, string.Empty, previous, disableTabing: _page.CurrentPageIndex == previous).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }
@@ -78,44 +78,48 @@ namespace Gobln.Pager.Mvc.Builder
                         sb.Append(GeneratePageNumbers());
                         break;
 
+                    case ItemShow.PagesItemsRange:
+                        sb.Append(GeneratePageNumbers(true));
+                        break;
+
                     case ItemShow.JumpNextItem:
-                        if (_pagerOptions.AlwaysShowJumpPageItem || _pageDefition.CurrentPageIndex + _pagerOptions.VisableItemsPerSide < _pageDefition.TotalPageCount - 1)
+                        if (_pagerOptions.AlwaysShowJumpPageItem || _page.CurrentPageIndex + _pagerOptions.VisableItemsPerSide < _page.TotalPageCount - 1)
                         {
-                            var next = _pageDefition.CurrentPageIndex + _pagerOptions.VisableItemsPerSide;
+                            var next = _page.CurrentPageIndex + _pagerOptions.VisableItemsPerSide;
 
-                            next = ((_pageDefition.TotalPageCount - next) / 2) + next;
+                            next = ((_page.TotalPageCount - next) / 2) + next;
 
-                            next = next > _pageDefition.TotalPageCount ? _pageDefition.TotalPageCount : next;
+                            next = next > _page.TotalPageCount ? _page.TotalPageCount : next;
 
-                            var il = GenerateIl(next == _pageDefition.CurrentPageIndex);
+                            var il = GenerateIl(next == _page.CurrentPageIndex);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelJumpPageItem, string.Empty, next, disableTabing: _pageDefition.CurrentPageIndex == next).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelJumpPageItem, string.Empty, next, disableTabing: _page.CurrentPageIndex == next).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }
                         break;
 
                     case ItemShow.NextItem:
-                        if (_pagerOptions.AlwaysShowNextPageItem || _pageDefition.CurrentPageIndex < _pageDefition.TotalPageCount)
+                        if (_pagerOptions.AlwaysShowNextPageItem || _page.CurrentPageIndex < _page.TotalPageCount)
                         {
-                            var next = _pageDefition.CurrentPageIndex + 1;
+                            var next = _page.CurrentPageIndex + 1;
 
-                            next = next > _pageDefition.TotalPageCount ? _pageDefition.TotalPageCount : next;
+                            next = next > _page.TotalPageCount ? _page.TotalPageCount : next;
 
-                            var il = GenerateIl(next == _pageDefition.CurrentPageIndex);
+                            var il = GenerateIl(next == _page.CurrentPageIndex);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelNextPageItem, "&raquo;&raquo;", next, disableTabing: _pageDefition.CurrentPageIndex == next).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelNextPageItem, "&raquo;&raquo;", next, disableTabing: _page.CurrentPageIndex == next).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }
                         break;
 
                     case ItemShow.LastItem:
-                        if (_pagerOptions.AlwaysShowLastPageItem || _pageDefition.CurrentPageIndex + _pagerOptions.VisableItemsPerSide < _pageDefition.TotalPageCount)
+                        if (_pagerOptions.AlwaysShowLastPageItem || _page.CurrentPageIndex + _pagerOptions.VisableItemsPerSide < _page.TotalPageCount)
                         {
-                            var il = GenerateIl(_pageDefition.CurrentPageIndex == _pageDefition.TotalPageCount);
+                            var il = GenerateIl(_page.CurrentPageIndex == _page.TotalPageCount);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelLastPageItem, "&raquo;", _pageDefition.TotalPageCount, disableTabing: _pageDefition.CurrentPageIndex == _pageDefition.TotalPageCount).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelLastPageItem, "&raquo;", _page.TotalPageCount, disableTabing: _page.CurrentPageIndex == _page.TotalPageCount).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }
@@ -142,9 +146,9 @@ namespace Gobln.Pager.Mvc.Builder
         private TagBuilder GenerateNav()
         {
             var tagBuilder = new TagBuilder("nav");
-            
+
             tagBuilder.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(_pagerOptions.NavTagHtmlAttributes));
-            
+
             return tagBuilder;
         }
 
@@ -159,6 +163,7 @@ namespace Gobln.Pager.Mvc.Builder
                 case PagerSizeEnum.Large:
                     tagBuilder.AddCssClass("pagination-lg");
                     break;
+
                 case PagerSizeEnum.Small:
                     tagBuilder.AddCssClass("pagination-sm");
                     break;
@@ -169,6 +174,7 @@ namespace Gobln.Pager.Mvc.Builder
                 case PagerAlignmentEnum.Center:
                     tagBuilder.AddCssClass("justify-content-center");
                     break;
+
                 case PagerAlignmentEnum.Right:
                     tagBuilder.AddCssClass("justify-content-end");
                     break;
@@ -285,29 +291,33 @@ namespace Gobln.Pager.Mvc.Builder
             return tagBuilder;
         }
 
-        private string GeneratePageNumbers()
+        private string GeneratePageNumbers(bool numberRange = false)
         {
             var sb = new StringBuilder();
 
-            var startIndex = _pageDefition.CurrentPageIndex - _pagerOptions.VisableItemsPerSide;
-            var endIndex = _pageDefition.CurrentPageIndex + _pagerOptions.VisableItemsPerSide;
+            var startIndex = _page.CurrentPageIndex - _pagerOptions.VisableItemsPerSide;
+            var endIndex = _page.CurrentPageIndex + _pagerOptions.VisableItemsPerSide;
 
             if (startIndex < 1)
                 startIndex = 1;
 
-            if (endIndex > _pageDefition.TotalPageCount)
-                endIndex = _pageDefition.TotalPageCount;
+            if (endIndex > _page.TotalPageCount)
+                endIndex = _page.TotalPageCount;
 
             for (int index = startIndex; index <= endIndex; index++)
             {
-                var il = GenerateIl(_pageDefition.CurrentPageIndex == index, _pagerOptions.ActiveDisplay && _pageDefition.CurrentPageIndex == index);
+                var text = numberRange
+                    ? $"{((index - 1) * _page.PageSize) + 1 } - {((index - 1) * _page.PageSize) + _page.PageSize}"
+                    : index.ToString();
 
-                var link = _pagerOptions.ActiveDisplayAsLink && _pageDefition.CurrentPageIndex == index
-                    ? GenerateSpanTag(index.ToString(), string.Empty, index)
-                    : GenerateLinkTag(index.ToString(), string.Empty, index);
+                var il = GenerateIl(_page.CurrentPageIndex == index, _pagerOptions.ActiveDisplay && _page.CurrentPageIndex == index);
 
-                if (_pagerOptions.ActiveDisplay && _pageDefition.CurrentPageIndex == index)
-                    link.InnerHtml = index.ToString() + GenerateSpanTag("(current)", "sr-only").ToString(TagRenderMode.Normal);
+                var link = _pagerOptions.ActiveDisplayAsLink && _page.CurrentPageIndex == index
+                    ? GenerateSpanTag(text, string.Empty, index)
+                    : GenerateLinkTag(text, string.Empty, index);
+
+                if (_pagerOptions.ActiveDisplay && _page.CurrentPageIndex == index)
+                    link.InnerHtml = text + GenerateSpanTag("(current)", "sr-only").ToString(TagRenderMode.Normal);
 
                 il.InnerHtml = link.ToString(TagRenderMode.Normal);
 
@@ -325,7 +335,7 @@ namespace Gobln.Pager.Mvc.Builder
         private string GenerateUrl(int pageIndex)
         {
             //return null if  page index larger than total page count or smaller then 1
-            if (pageIndex > _pageDefition.TotalPageCount || pageIndex < 1)
+            if (pageIndex > _page.TotalPageCount || pageIndex < 1)
                 return null;
 
             return Helper.AddQueryValuesToUrlString(_pagerOptions.Url, new Dictionary<string, string> { { _pagerOptions.DataIndexName, pageIndex.ToString() } });

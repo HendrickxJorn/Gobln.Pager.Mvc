@@ -18,7 +18,7 @@ namespace Gobln.Pager.Mvc.Infrastructure
 
             if (parseQueryString.HasKeys())
             {
-                foreach(var param in new string[] { "x-requested-with", "xmlhttprequest" })
+                foreach (var param in new string[] { "x-requested-with", "xmlhttprequest" })
                 {
                     parseQueryString.Remove(param);
                 }
@@ -36,7 +36,6 @@ namespace Gobln.Pager.Mvc.Infrastructure
 
             return uriBuilder.Uri.AbsoluteUri;
         }
-
 
         public static string AddQueryValuesToUrlString(string url, Dictionary<string, string> queryValues)
         {
@@ -63,4 +62,5 @@ namespace Gobln.Pager.Mvc.Infrastructure
         }
     }
 }
+
 #endif

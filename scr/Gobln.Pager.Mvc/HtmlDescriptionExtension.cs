@@ -4,6 +4,7 @@ using Gobln.Pager.Mvc.Infrastructure;
 using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Gobln.Pager.Mvc
@@ -18,26 +19,51 @@ namespace Gobln.Pager.Mvc
         /// </summary>
         /// <typeparam name="TModel">The type of the model.</typeparam>
         /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="html">The HTML helper instance that this method extends.</param>
+        /// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
         /// <param name="expression">An expression that identifies the object that contains the description name.</param>
         /// <returns>The description name for the model.</returns>
-        public static MvcHtmlString DescriptionFor<TModel, TValue>(this HtmlHelper<Page<TModel>> html, Expression<Func<TModel, TValue>> expression)
+        public static MvcHtmlString DescriptionFor<TModel, TValue>(this HtmlHelper<Page<TModel>> htmlHelper, Expression<Func<TModel, TValue>> expression)
         {
-            string desc;
+            ////if (htmlHelper == null)
+            ////{
+            ////    throw new ArgumentNullException(nameof(htmlHelper));
+            ////}
 
-            var name = ExpressionHelper.GetExpressionText(expression);
+            ////if (expression == null)
+            ////{
+            ////    throw new ArgumentNullException(nameof(expression));
+            ////}
 
-            var item = typeof(TModel).GetProperty(name).GetAttribute<DescriptionAttribute>(true);
+            ////string desc;
 
-            if (item != null)
-                desc = item.Description;
-            else
+            ////var name = ExpressionHelper.GetExpressionText(expression);
+
+            ////var item = typeof(TModel).GetProperty(name).GetAttribute<DescriptionAttribute>(true);
+
+            ////if (item != null)
+            ////    desc = item.Description;
+            ////else
+            ////{
+            ////    name = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
+            ////    desc = ModelMetadataProviders.Current.GetMetadataForProperty(() => Activator.CreateInstance<TModel>(), typeof(TModel), name).Description;
+            ////}
+
+            ////return new MvcHtmlString(desc);
+
+
+            if (htmlHelper == null)
             {
-                name = html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
-                desc = ModelMetadataProviders.Current.GetMetadataForProperty(() => Activator.CreateInstance<TModel>(), typeof(TModel), name).Description;
+                throw new ArgumentNullException(nameof(htmlHelper));
             }
 
-            return new MvcHtmlString(desc);
+            if (expression == null)
+            {
+                throw new ArgumentNullException(nameof(expression));
+            }
+
+            var metadata = ModelMetadata.FromLambdaExpression(expression, new ViewDataDictionary<TModel>());
+
+            return new MvcHtmlString(HttpUtility.HtmlEncode(metadata.Description ?? string.Empty));
         }
     }
 }

@@ -4,11 +4,13 @@
 
 <div>
     <h2>
-        Change the pageindex name
+        Show only page number range
     </h2>
 
     @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
     {
-        DataIndexName = "TestNamePageIndex"
+        ItemShowOrder = new[] { ItemShow.PagesItemsRange }
     })
+    
 </div>
+

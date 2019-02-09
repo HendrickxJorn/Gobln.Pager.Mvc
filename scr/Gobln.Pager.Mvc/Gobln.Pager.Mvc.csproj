@@ -22,15 +22,15 @@
     <PackageTags>Page, Pager, Paging, Pagination, Core, Mvc</PackageTags>
     <PackageLicenseUrl>https://github.com/HendrickxJorn/Gobln.Pager.Mvc/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/HendrickxJorn/Gobln.Pager.Mvc</PackageProjectUrl>
-    <Authors>Hendrickx Jorn</Authors>
+    <Authors>Jorn Hendrickx</Authors>
     <Product>Gobln.Pager.Mvc</Product>
     <AssemblyName>Gobln.Pager.Mvc</AssemblyName>
     <RootNamespace>Gobln.Pager.Mvc</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
-	<Tags>Page, Pager, Paging, Pagination, Core, Mvc</Tags>
+    <Version>1.0.2</Version>
+	<Tags>Page, Pager, Paging, Pagination, Core, Mvc, Razor</Tags>
     <Company />
-    <Description>A lightweight pager libery for Mvc 4 and 5, written in C#. Compatible with bootstap 3 or 4</Description>
+    <Description>A lightweight and easy to use dynamic pager libery for Mvc 4 and up, written in C#. Compatible with bootstap 3 and 4</Description>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
@@ -62,6 +62,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
 	<Reference Include="System.Configuration" />-->
 	<Reference Include="System.Web" />
+	<Reference Include="System.ComponentModel.DataAnnotations" />
 	<PackageReference Include="Microsoft.AspNet.Mvc">
       <Version>4.0.20505</Version>
     </PackageReference>
@@ -72,6 +73,7 @@
 	<Reference Include="System.ComponentModel.DataAnnotations" />
 	<Reference Include="System.Configuration" />-->
 	<Reference Include="System.Web" />
+	<Reference Include="System.ComponentModel.DataAnnotations" />
     <PackageReference Include="Microsoft.AspNet.Mvc">
       <Version>4.0.20505</Version>
     </PackageReference>
@@ -84,7 +86,7 @@
   </ItemGroup>
     
   <ItemGroup>
-    <PackageReference Include="Gobln.Pager" Version="1.0.0" />
+    <PackageReference Include="Gobln.Pager" Version="1.0.3" />
 	<Content Include="Css\gobln.pager.mvc.css">
       <Pack>true</Pack>
       <PackagePath>Content\Content\gobln.pager.mvc.css</PackagePath>

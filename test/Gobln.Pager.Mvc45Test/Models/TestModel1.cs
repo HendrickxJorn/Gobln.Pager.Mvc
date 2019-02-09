@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gobln.Pager.Mvc45Test.Models
 {
@@ -11,6 +9,7 @@ namespace Gobln.Pager.Mvc45Test.Models
 
         public string Name { get; set; }
 
+        [Display(Name="Creation Date", Description ="Date when this is created")]
         public DateTime Date { get; set; }
     }
 }

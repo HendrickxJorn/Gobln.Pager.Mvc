@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Gobln.Pager.MvcCore20Test.Models;
 using Microsoft.AspNetCore.Mvc;
-using Gobln.Pager.MvcCore20Test.Models;
+using System;
 
 namespace Gobln.Pager.MvcCore20Test.Controllers
 {

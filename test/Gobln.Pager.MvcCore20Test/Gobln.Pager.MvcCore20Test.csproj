@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gobln.Pager" Version="1.0.0" />
+    <PackageReference Include="Gobln.Pager" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
   </ItemGroup>
@@ -19,6 +19,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Bootstrap3\Test\ShowItems.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Bootstrap3\Test\ShowItemsRange.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Bootstrap4\Test\ShowItems.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Bootstrap4\Test\ShowItemsRange.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\NoBootstrap\Test\ShowItemsRange.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_LayoutBootstrap4.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\TagHelper\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

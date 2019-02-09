@@ -1,26 +1,29 @@
 ﻿@model Gobln.Pager.PagedList<Gobln.Pager.Mvc45Test.Models.TestModel1>
 @{
     ViewBag.Title = "Bootstrap 3 examples";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link href="/Content/Bootstrap3/bootstrap.css" rel="stylesheet">
+@section Css{
+    <link href="/Content/Bootstrap3/bootstrap.css" rel="stylesheet">
 
-<style>
-    /* Add css to allow alignment in bootstrap 3 */
-    nav ul.pagination.justify-content-center {
-        display: -ms-flexbox !important;
-        display: flex !important;
-        -ms-flex-pack: center !important;
-        justify-content: center !important;
-    }
+    <style>
+        /* Add css to allow alignment in bootstrap 3 */
+        nav ul.pagination.justify-content-center {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-pack: center !important;
+            justify-content: center !important;
+        }
 
-    nav ul.pagination.justify-content-end {
-        display: -ms-flexbox !important;
-        display: flex !important;
-        -ms-flex-pack: end !important;
-        justify-content: flex-end !important;
-    }
-</style>
+        nav ul.pagination.justify-content-end {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-pack: end !important;
+            justify-content: flex-end !important;
+        }
+    </style>
+}
 
 <h2>Bootstrap 3 examples</h2>
 
@@ -30,4 +33,7 @@
     @Html.Partial("Test/DisabledAndActiveStates", Model)
     @Html.Partial("Test/Sizing", Model)
     @Html.Partial("Test/Alignment", Model)
+
+    @Html.Partial("Test/ShowItems", Model)
+    @Html.Partial("Test/ShowItemsRange", Model)
 </div>

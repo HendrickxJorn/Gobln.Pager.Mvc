@@ -1,0 +1,40 @@
+﻿@using Gobln.Pager
+@using Gobln.Pager.Mvc
+@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
+
+<div>
+    <h2>
+        Show only page numbers items
+    </h2>
+
+    @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+    {
+        ItemShowOrder = new[] { ItemShow.PagesItems }
+    })
+</div>
+
+<div>
+    <h2>
+        Show only next and previous
+    </h2>
+
+    @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+    {
+        ItemShowOrder = new[] { ItemShow.PreviousItem, ItemShow.NextItem }
+    })
+</div>
+
+<div>
+    <h2>
+        Hide items if there are disabled
+    </h2>
+
+    @Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+    {
+        AlwaysShowFirstPageItem = false,
+        AlwaysShowJumpPageItem = false,
+        AlwaysShowLastPageItem = false,
+        AlwaysShowNextPageItem = false,
+        AlwaysShowPreviousPageItem = false
+    })
+</div>

@@ -80,7 +80,7 @@
 
         /// <summary>
         /// Display/highlight the active page.
-        /// BootStrap
+        /// BootStrap only
         /// </summary>
         public bool ActiveDisplay { get; set; } = false;
 

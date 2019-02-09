@@ -3,7 +3,9 @@
     ViewBag.Title = "Bootstrap 3 examples";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+@section Css{
+<link href="~/css/Bootstrap3/bootstrap.css" rel="stylesheet">
+}
 
 <style>
     /* Add css to allow alignment in bootstrap 3 */
@@ -30,4 +32,7 @@
     @Html.Partial("Test/DisabledAndActiveStates", Model)
     @Html.Partial("Test/Sizing", Model)
     @Html.Partial("Test/Alignment", Model)
+
+    @Html.Partial("Test/ShowItems", Model)
+    @Html.Partial("Test/ShowItemsRange", Model)
 </div>

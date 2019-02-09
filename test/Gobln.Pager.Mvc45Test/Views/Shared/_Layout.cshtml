@@ -6,10 +6,36 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Css")
 </head>
 <body>
-    <div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Pager test", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("NoBootstrap", "Index", "NoBootstrap")</li>
+                        <li>@Html.ActionLink("Bootstrap3", "Index", "Bootstrap3")</li>
+                        <li>@Html.ActionLink("Bootstrap4", "Index", "Bootstrap4")</li>
+                        <li>@Html.ActionLink("Table test", "Index", "Table")</li>
+                        <li>@Html.ActionLink("Table test with bootstrap", "Index", "TableBootstrap")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="container body-content">
         @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

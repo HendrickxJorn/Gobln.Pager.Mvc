@@ -1,9 +1,12 @@
 ﻿@model Gobln.Pager.PagedList<Gobln.Pager.MvcCore20Test.Models.TestModel1>
 @{
     ViewBag.Title = "Examples";
+    Layout = "~/Views/Shared/_LayoutBootstrap4.cshtml";
 }
 
-<link href="~/css/Bootstrap4/bootstrap.css" rel="stylesheet">
+@section Css{
+    <link href="~/css/Bootstrap4/bootstrap.css" rel="stylesheet">
+}
 
 <h2>Examples with taghelper</h2>
 

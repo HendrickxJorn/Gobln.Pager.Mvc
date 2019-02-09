@@ -48,8 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gobln.Pager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Gobln.Pager.1.0.0\lib\net45\Gobln.Pager.dll</HintPath>
+    <Reference Include="Gobln.Pager, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gobln.Pager.1.0.3\lib\net45\Gobln.Pager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -149,6 +149,9 @@
     <Compile Include="Controllers\Bootstrap3Controller.cs" />
     <Compile Include="Controllers\Bootstrap4Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TableBootstrapController.cs" />
+    <Compile Include="Controllers\TableController.cs" />
+    <Compile Include="Controllers\NoBootstrapController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -174,6 +177,7 @@
     <Content Include="Content\Bootstrap4\bootstrap-reboot.min.css" />
     <Content Include="Content\Bootstrap4\bootstrap.css" />
     <Content Include="Content\Bootstrap4\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap4WitoutPaging\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -240,10 +244,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Test\NoOptions.cshtml" />
-    <Content Include="Views\Home\Test\WorkingWithIcons.cshtml" />
-    <Content Include="Views\Home\Test\Disabled.cshtml" />
+    <Content Include="Views\NoBootstrap\Index.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\NoOptions.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\WorkingWithIcons.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\Disabled.cshtml" />
     <Content Include="Views\Bootstrap4\Test\Overview.cshtml" />
     <Content Include="Views\Bootstrap4\Test\DisabledAndActiveStates.cshtml" />
     <Content Include="Views\Bootstrap4\Test\WorkingWithIcons.cshtml" />
@@ -259,16 +263,26 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Bootstrap4\Index.cshtml" />
-    <Content Include="Views\Home\Test\Alignment.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\Alignment.cshtml" />
     <Content Include="Views\Bootstrap3\Index.cshtml" />
     <Content Include="Views\Bootstrap3\Test\Alignment.cshtml" />
     <Content Include="Views\Bootstrap3\Test\DisabledAndActiveStates.cshtml" />
     <Content Include="Views\Bootstrap3\Test\Overview.cshtml" />
     <Content Include="Views\Bootstrap3\Test\Sizing.cshtml" />
     <Content Include="Views\Bootstrap3\Test\WorkingWithIcons.cshtml" />
-    <Content Include="Views\Home\Test\Url.cshtml" />
-    <Content Include="Views\Home\Test\ShowItems.cshtml" />
-    <Content Include="Views\Home\Test\PageIndexName.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\Url.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\ShowItems.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\PageIndexName.cshtml" />
+    <Content Include="Views\NoBootstrap\Test\ShowItemsRange.cshtml" />
+    <Content Include="Views\Bootstrap4\Test\ShowItemsRange.cshtml" />
+    <Content Include="Views\Bootstrap3\Test\ShowItemsRange.cshtml" />
+    <Content Include="Views\Bootstrap4\Test\ShowItems.cshtml" />
+    <Content Include="Views\Bootstrap3\Test\ShowItems.cshtml" />
+    <Content Include="Views\Table\Index.cshtml" />
+    <Content Include="Views\TableBootstrap\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutBootstrap4.cshtml" />
+    <Content Include="Views\NoBootstrap\ViewBagTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
