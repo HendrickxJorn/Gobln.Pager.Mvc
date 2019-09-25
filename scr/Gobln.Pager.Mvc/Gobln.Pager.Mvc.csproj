@@ -24,7 +24,6 @@
     <PackageId>Gobln.Pager.Mvc</PackageId>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Page, Pager, Paging, Pagination, Core, Mvc</PackageTags>
-    <PackageLicenseUrl>https://github.com/HendrickxJorn/Gobln.Pager.Mvc/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/HendrickxJorn/Gobln.Pager.Mvc</PackageProjectUrl>
     <Authors>Jorn Hendrickx</Authors>
     <Product>Gobln.Pager.Mvc</Product>
@@ -34,6 +33,8 @@
     <Version>1.1.0</Version>
 	<Tags>Page, Pager, Paging, Pagination, Core, Mvc, Razor</Tags>
     <Description>A lightweight and easy to use dynamic pager libery for Mvc 4 and up, written in C#. Compatible with bootstap 3 and 4</Description>
+	<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+	<PackageIconUrl>https://github.com/HendrickxJorn/Gobln.Pager.Mvc/blob/master/images/Gobln%20Pager%20MVC.ico?raw=true</PackageIconUrl>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
