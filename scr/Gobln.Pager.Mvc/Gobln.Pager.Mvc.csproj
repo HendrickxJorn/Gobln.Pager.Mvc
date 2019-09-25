@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net40;net45;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net40;net45;netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
@@ -13,6 +13,10 @@
   </PropertyGroup>
     
   <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp2.0'">
+    <DefineConstants>FEATURE_TYPE_CORE20</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.0'">
     <DefineConstants>FEATURE_TYPE_CORE20</DefineConstants>
   </PropertyGroup>
     
@@ -27,9 +31,8 @@
     <AssemblyName>Gobln.Pager.Mvc</AssemblyName>
     <RootNamespace>Gobln.Pager.Mvc</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.1.0</Version>
 	<Tags>Page, Pager, Paging, Pagination, Core, Mvc, Razor</Tags>
-    <Company />
     <Description>A lightweight and easy to use dynamic pager libery for Mvc 4 and up, written in C#. Compatible with bootstap 3 and 4</Description>
   </PropertyGroup>
   
@@ -45,6 +48,10 @@
     <DocumentationFile>bin\Debug\netcoreapp2.0\Gobln.Pager.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.0|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp3.0\Gobln.Pager.Mvc.xml</DocumentationFile>
+  </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|AnyCPU'">
     <DocumentationFile>bin\Release\net40\Gobln.Pager.Mvc.xml</DocumentationFile>
   </PropertyGroup>
@@ -55,6 +62,10 @@
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.0|AnyCPU'">
     <DocumentationFile>bin\Release\netcoreapp2.0\Gobln.Pager.Mvc.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.0|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp3.0\Gobln.Pager.Mvc.xml</DocumentationFile>
   </PropertyGroup>
  
   <ItemGroup Condition="'$(TargetFramework)'=='net40'">
@@ -84,9 +95,13 @@
       <Version>2.0.0</Version>
     </PackageReference>
   </ItemGroup>
-    
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+      
   <ItemGroup>
-    <PackageReference Include="Gobln.Pager" Version="1.0.3" />
+    <PackageReference Include="Gobln.Pager" Version="1.1.0" />
 	<Content Include="Css\gobln.pager.mvc.css">
       <Pack>true</Pack>
       <PackagePath>Content\Content\gobln.pager.mvc.css</PackagePath>

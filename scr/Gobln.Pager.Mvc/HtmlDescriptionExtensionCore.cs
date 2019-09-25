@@ -1,9 +1,14 @@
 ﻿#if NETCOREAPP2_0
-
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#endif
+#if NETCOREAPP3_0
+using System.Reflection;
+using System.ComponentModel;
+#endif
+#if NETCOREAPP2_0 || NETCOREAPP3_0
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Linq.Expressions;
 
@@ -34,11 +39,19 @@ namespace Gobln.Pager.Mvc
                 throw new ArgumentNullException(nameof(expression));
             }
 
+#if NETCOREAPP2_0
             var modelExplorer = ExpressionMetadataProvider.FromLambdaExpression(expression
                                 , new ViewDataDictionary<TModel>(new EmptyModelMetadataProvider(), new ModelStateDictionary())
                                 , htmlHelper.MetadataProvider);
 
             return modelExplorer?.Metadata?.Description;
+#endif
+
+#if NETCOREAPP3_0
+            // To Check: if this can also be used for NETCOREAPP2_0
+
+            return (expression.Body as MemberExpression).Member.GetCustomAttribute<DescriptionAttribute>(true)?.Description;
+#endif
         }
     }
 }

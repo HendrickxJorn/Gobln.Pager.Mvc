@@ -2,15 +2,20 @@
 [defaultBootstrapImage]: images/defaultBootstrapImage.png "With Bootstrap image"
 [parameterCssImage]: images/ParameterCssImage.png "With Css image"
 [parameterBootstrapImage]: images/ParameterBootstrapImage.png "With Bootstrap image"
+[ex001]: images/ex001.jpg "Example 001"
+[ex002]: images/ex002.jpg "Example 002"
 
 # Gobln.Pager.Mvc
 
-Gobln.Pager.Mvc is a .Net pager libery for Mvc 4 and 5, written in C#. The pager is easy to use and is compatible with bootstap 3 and 4.
+Gobln.Pager.Mvc is an easy to use dynamic .Net pager libery for Mvc 4 and up, written in C#.
+The libery is compatible with bootstrap 3 and 4, or you can use a custom css file to display the pager.
 
 ## Features
 
 * Support 4.0 and higher
 * Support Core 2.0 and higher
+* Support Core 3.0 and higher
+* Support Mvc 4.0 and higher
 
 ## How to use
 
@@ -65,11 +70,17 @@ With Bootstrap
 @Html.Pager(page,
     new PagerOptions
     {
+        //Change text of the first page link
         LabelFirstPageItem = "Begin",
+        //Change text of the last page link
         LabelLastPageItem = "End",
+        //Change text of the next page link
         LabelNextPageItem = "Next",
+        //Change text of the previous page link
         LabelPreviousPageItem = "Prev",
+        //The order the links will be displayed
         ItemShowOrder = new[] { ItemShow.FirstItem, ItemShow.PreviousItem, ItemShow.PagesItems, ItemShow.NextItem, ItemShow.LastItem },
+        //Howmany items will be displayed to the left and right of the current page
         VisableItemsPerSide = 10
     })
 
@@ -94,8 +105,32 @@ Taghelper can be used with core 2.0, and will work the same as @Html.Pager()
                 {
                     DataIndexName="TestNamePageIndex"
                 })" />
-       
+
 ```
+
+Change the order of items of the pager
+
+```csharp
+
+@Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+   {
+       ItemShowOrder = new ItemShow[] { ItemShow.FirstItem, ItemShow.LastItem }
+   })
+
+```
+
+![Can not display image][ex001]
+
+```csharp
+
+@Html.Pager(Model.ToPage(1, 2), new PagerOptions()
+    {
+        ItemShowOrder = new ItemShow[] { ItemShow.FirstItem, ItemShow.PagesItemsRange, ItemShow.LastItem }
+    })
+
+```
+
+![Can not display image][ex002]
 
 For more examples, check the test project
 

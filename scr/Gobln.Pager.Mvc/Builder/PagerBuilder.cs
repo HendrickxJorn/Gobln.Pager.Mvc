@@ -1,4 +1,4 @@
-﻿#if !NETCOREAPP2_0
+﻿#if !(NETCOREAPP2_0 || NETCOREAPP3_0)
 
 using Gobln.Pager.Mvc.Infrastructure;
 using System.Collections.Generic;
@@ -204,7 +204,7 @@ namespace Gobln.Pager.Mvc.Builder
 
             tagBuilder.AddCssClass("page-link");
 
-            tagBuilder.Attributes.Add(string.Format("data-{0}", _pagerOptions.DataIndexName), pageIndex.ToString());
+            tagBuilder.Attributes.Add($"data-{_pagerOptions.DataIndexName}", pageIndex.ToString());
 
             if (disableTabing)
                 tagBuilder.Attributes.Add("tabindex", "-1");

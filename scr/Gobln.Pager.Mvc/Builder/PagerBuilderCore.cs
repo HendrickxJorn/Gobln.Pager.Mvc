@@ -1,4 +1,4 @@
-﻿#if NETCOREAPP2_0
+﻿#if NETCOREAPP2_0 || NETCOREAPP3_0
 
 using Gobln.Pager.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Html;
@@ -24,7 +24,7 @@ namespace Gobln.Pager.Mvc.Builder
             return RenderPager();
         }
 
-        #region Private
+#region Private
 
         private IHtmlContent RenderPager()
         {
@@ -144,7 +144,7 @@ namespace Gobln.Pager.Mvc.Builder
             return nav;
         }
 
-        #region Generate
+#region Generate
 
         private TagBuilder GenerateNav()
         {
@@ -207,7 +207,7 @@ namespace Gobln.Pager.Mvc.Builder
 
             tagBuilder.AddCssClass("page-link");
 
-            tagBuilder.Attributes.Add(string.Format("data-{0}", _pagerOptions.DataIndexName), pageIndex.ToString());
+            tagBuilder.Attributes.Add($"data-{_pagerOptions.DataIndexName}", pageIndex.ToString());
 
             if (disableTabing)
                 tagBuilder.Attributes.Add("tabindex", "-1");
@@ -342,9 +342,9 @@ namespace Gobln.Pager.Mvc.Builder
             return Helper.AddQueryValuesToUrlString(_pagerOptions.Url, new Dictionary<string, string> { { _pagerOptions.DataIndexName, pageIndex.ToString() } });
         }
 
-        #endregion Generate
+#endregion Generate
 
-        #endregion Private
+#endregion Private
     }
 }
 
