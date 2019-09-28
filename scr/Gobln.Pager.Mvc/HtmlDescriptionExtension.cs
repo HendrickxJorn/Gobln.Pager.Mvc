@@ -1,8 +1,8 @@
 ﻿#if !(NETCOREAPP2_0 || NETCOREAPP3_0)
 
-using Gobln.Pager.Mvc.Infrastructure;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +16,7 @@ namespace Gobln.Pager.Mvc
     {
         /// <summary>
         /// Gets the description name for the model.
+        /// If DescriptionAttribute is not found than will look for DisplayAttribute to get the description from.
         /// </summary>
         /// <typeparam name="TModel">The type of the model.</typeparam>
         /// <typeparam name="TValue">The type of the value.</typeparam>
@@ -24,33 +25,6 @@ namespace Gobln.Pager.Mvc
         /// <returns>The description name for the model.</returns>
         public static MvcHtmlString DescriptionFor<TModel, TValue>(this HtmlHelper<Page<TModel>> htmlHelper, Expression<Func<TModel, TValue>> expression)
         {
-            ////if (htmlHelper == null)
-            ////{
-            ////    throw new ArgumentNullException(nameof(htmlHelper));
-            ////}
-
-            ////if (expression == null)
-            ////{
-            ////    throw new ArgumentNullException(nameof(expression));
-            ////}
-
-            ////string desc;
-
-            ////var name = ExpressionHelper.GetExpressionText(expression);
-
-            ////var item = typeof(TModel).GetProperty(name).GetAttribute<DescriptionAttribute>(true);
-
-            ////if (item != null)
-            ////    desc = item.Description;
-            ////else
-            ////{
-            ////    name = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(name);
-            ////    desc = ModelMetadataProviders.Current.GetMetadataForProperty(() => Activator.CreateInstance<TModel>(), typeof(TModel), name).Description;
-            ////}
-
-            ////return new MvcHtmlString(desc);
-
-
             if (htmlHelper == null)
             {
                 throw new ArgumentNullException(nameof(htmlHelper));
@@ -61,9 +35,10 @@ namespace Gobln.Pager.Mvc
                 throw new ArgumentNullException(nameof(expression));
             }
 
-            var metadata = ModelMetadata.FromLambdaExpression(expression, new ViewDataDictionary<TModel>());
+            var m = (expression.Body as MemberExpression).Member;
 
-            return new MvcHtmlString(HttpUtility.HtmlEncode(metadata.Description ?? string.Empty));
+            return new MvcHtmlString(HttpUtility.HtmlEncode(((DescriptionAttribute)Attribute.GetCustomAttribute(m, typeof(DescriptionAttribute), false))?.Description
+                        ?? ((DisplayAttribute)Attribute.GetCustomAttribute(m, typeof(DisplayAttribute), false))?.Description));
         }
     }
 }
