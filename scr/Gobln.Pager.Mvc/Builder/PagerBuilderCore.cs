@@ -24,7 +24,7 @@ namespace Gobln.Pager.Mvc.Builder
             return RenderPager();
         }
 
-#region Private
+        #region Private
 
         private IHtmlContent RenderPager()
         {
@@ -115,7 +115,7 @@ namespace Gobln.Pager.Mvc.Builder
 
                             var il = GenerateIl(next == _page.CurrentPageIndex);
 
-                            il.InnerHtml.AppendHtml(GenerateLinkTag(_pagerOptions.LabelNextPageItem, "&raquo;&raquo;", next, disableTabing: _page.CurrentPageIndex == next));
+                            il.InnerHtml.AppendHtml(GenerateLinkTag(_pagerOptions.LabelNextPageItem, "&raquo;", next, disableTabing: _page.CurrentPageIndex == next));
 
                             ul.InnerHtml.AppendHtml(il);
                         }
@@ -126,7 +126,7 @@ namespace Gobln.Pager.Mvc.Builder
                         {
                             var il = GenerateIl(_page.CurrentPageIndex == _page.TotalPageCount);
 
-                            il.InnerHtml.AppendHtml(GenerateLinkTag(_pagerOptions.LabelLastPageItem, "&raquo;", _page.TotalPageCount, disableTabing: _page.CurrentPageIndex == _page.TotalPageCount));
+                            il.InnerHtml.AppendHtml(GenerateLinkTag(_pagerOptions.LabelLastPageItem, "&raquo;&raquo;", _page.TotalPageCount, disableTabing: _page.CurrentPageIndex == _page.TotalPageCount));
 
                             ul.InnerHtml.AppendHtml(il);
                         }
@@ -144,7 +144,7 @@ namespace Gobln.Pager.Mvc.Builder
             return nav;
         }
 
-#region Generate
+        #region Generate
 
         private TagBuilder GenerateNav()
         {
@@ -342,9 +342,9 @@ namespace Gobln.Pager.Mvc.Builder
             return Helper.AddQueryValuesToUrlString(_pagerOptions.Url, new Dictionary<string, string> { { _pagerOptions.DataIndexName, pageIndex.ToString() } });
         }
 
-#endregion Generate
+        #endregion Generate
 
-#endregion Private
+        #endregion Private
     }
 }
 

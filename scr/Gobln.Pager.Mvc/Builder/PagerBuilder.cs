@@ -108,7 +108,7 @@ namespace Gobln.Pager.Mvc.Builder
 
                             var il = GenerateIl(next == _page.CurrentPageIndex);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelNextPageItem, "&raquo;&raquo;", next, disableTabing: _page.CurrentPageIndex == next).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelNextPageItem, "&raquo;", next, disableTabing: _page.CurrentPageIndex == next).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }
@@ -119,7 +119,7 @@ namespace Gobln.Pager.Mvc.Builder
                         {
                             var il = GenerateIl(_page.CurrentPageIndex == _page.TotalPageCount);
 
-                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelLastPageItem, "&raquo;", _page.TotalPageCount, disableTabing: _page.CurrentPageIndex == _page.TotalPageCount).ToString(TagRenderMode.Normal);
+                            il.InnerHtml = GenerateLinkTag(_pagerOptions.LabelLastPageItem, "&raquo;&raquo;", _page.TotalPageCount, disableTabing: _page.CurrentPageIndex == _page.TotalPageCount).ToString(TagRenderMode.Normal);
 
                             sb.Append(il.ToString(TagRenderMode.Normal));
                         }

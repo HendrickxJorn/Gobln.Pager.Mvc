@@ -30,7 +30,7 @@
     <AssemblyName>Gobln.Pager.Mvc</AssemblyName>
     <RootNamespace>Gobln.Pager.Mvc</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
 	<Tags>Page, Pager, Paging, Pagination, Core, Mvc, Razor</Tags>
     <Description>A lightweight and easy to use dynamic pager libery for Mvc 4 and up, written in C#. Compatible with bootstap 3 and 4</Description>
 	<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -102,7 +102,7 @@
   </ItemGroup>
       
   <ItemGroup>
-    <PackageReference Include="Gobln.Pager" Version="1.1.0" />
+    <PackageReference Include="Gobln.Pager" Version="1.1.1" />
 	<Content Include="Css\gobln.pager.mvc.css">
       <Pack>true</Pack>
       <PackagePath>Content\Content\gobln.pager.mvc.css</PackagePath>
